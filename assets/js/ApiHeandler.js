@@ -24,15 +24,18 @@ function pullData() {
                     "Date":row.c[4].f,               
                     "Hour": row.c[5].f.substr(0,5),
                     "Length":row.c[6].v,                
-                    "Language":row.c[7].v,             
+                    "Language":row.c[7].v,                               
                     "InstracturName":row.c[8].v,
                     "Tel":row.c[9].v,
                     "RegistrationLink":row.c[10].v,              
                     "ZoomLink":row.c[11].v, 
-                    "ImageLink":row.c[12].v,
+                    "ImageLink":row.c[12].v.substr(33,64),
                     "Description":row.c[13].v,
+                    "Age":row.c[14].v,
+                    "Tools":row.c[16].v,  
                   }                   
                   newData.push(obj);
+                  console.log(obj);
                 });                           
                 
             }
@@ -49,7 +52,7 @@ newData.forEach(obj=>{
     <div class="col">
     <div class="card h-100">
         <div class="overflow-hidden" style="height: 150px;">
-            <img src="assets/images/others/author-image-2.png" class="card-img-top" alt="..." style="width:100%;">
+            <img src="https://drive.google.com/uc?export=view&id=${obj.ImageLink}" class="card-img-top" alt="..." style="width:100%; min-height:100%">
         </div>
         <div class="card-body">
             <div class="row justify-content-between d-flex">
@@ -63,6 +66,8 @@ newData.forEach(obj=>{
             <li class="list-group-item"><strong>משך: </strong><span class="card-len">${obj.Length}</span> דקות</li>
             <li class="list-group-item"><strong>שפת העברה: </strong><span class="card-lan">${obj.Language}</span></li>
             <li class="list-group-item"><strong>שם המדריך/ה: </strong><span class="card-instractor">${obj.InstracturName}</span></li>
+            <li class="list-group-item"><strong>קהל יעד: </strong><span class="card-instractor">${obj.Age}</span></li>
+            <li class="list-group-item"><strong>ציוד נדרש: </strong><span class="card-instractor">${obj.Tools}</span></li>
         </ul>
         <div class="row d-flex card-footer justify-content-between align-content-between">
             <a href="${obj.RegistrationLink}" class="col col-5 card-link btn  tm-button card-reg" style="font-size: 14px;">להרשמה</a>

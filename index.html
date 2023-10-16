@@ -155,44 +155,48 @@
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <div class="row d-flex form-group" style="margin-bottom: 1rem;">
+                            <div class="row d-flex form-group justify-content-around" style="margin-bottom: 2rem;">
                                 <!-- תאריך  -->
                                 <div class="col col-3">
-                                    
+                                    <input type="text" id="datepicker" placeholder="תאריך:" class="form-control">
                                      
                                 </div>
 
                                 <!-- שפה  -->
-                                <div class="col col-3">
-                                <select class="form-control ">
-                                    <option value="0">בחירת שפה</option>
-                                    <option value="2">עברית</option>
-                                    <option value="3">אנגלית</option>
-                                    <option value="4">רוסית</option>
-                                    <option value="5">ערבית</option>
+                                <div class="col col">
+                                <select class="form-control" id="langInput">
+                                    <option >בחירת שפה</option>
+                                    <option >עברית</option>
+                                    <option >אנגלית</option>
+                                    <option >רוסית</option>
+                                    <option >ערבית</option>
                                   </select>
                                 </div>
                                 <!-- קהל יעד-->
-                                <div class="col col-3">
-                                <select class="form-control ">
-                                    <option value="0">בחירת קהל יעד</option>
-                                    <option value="1">כיתה א'</option>
-                                    <option value="2">כיתה ב'</option>
-                                    <option value="3">כיתה ג'</option>
-                                    <option value="4">כיתה ד'</option>
-                                    <option value="5">כיתה ה'</option>
-                                    <option value="6">כיתה ו'</option>
-                                    <option value="7">כיתה ז'</option>
-                                    <option value="8">כיתה ח'</option>
-                                    <option value="9">כיתה ט'</option>
-                                    <option value="10">כיתה י'</option>
-                                    <option value="11">כיתה י"א</option>
-                                    <option value="12">כיתה י"ב</option>
-                                    <option value="13">כל הגילאים</option>
+                                <div class="col col">
+                                <select class="form-control " id="ageInput">
+                                    <option >בחירת קהל יעד</option>
+                                    <option >כיתה א'</option>
+                                    <option>כיתה ב'</option>
+                                    <option >כיתה ג'</option>
+                                    <option >כיתה ד'</option>
+                                    <option >כיתה ה'</option>
+                                    <option >כיתה ו'</option>
+                                    <option >כיתה ז'</option>
+                                    <option >כיתה ח'</option>
+                                    <option >כיתה ט'</option>
+                                    <option>כיתה י'</option>
+                                    <option >כיתה יא</option>
+                                    <option >כיתה יב</option>
+                                    <option >בוגרים</option>
+                                    <option>כל הגילאים</option>
                                   </select>
                                 </div>
                                 <div class="col ">
-                                    <button type="submit" class="btn btn-primary">סנן</button>
+                                    <button type="submit" class="btn tm-button wow" onclick="pullData(false)">סנן</button>
+                                </div>
+                                <div class="col ">
+                                    <button type="submit" class="btn tm-button wow" onclick="pullData(true)">איפוס</button>
                                 </div>
 
                                 
@@ -220,7 +224,7 @@
                                         <li class="list-group-item">שם המדריך/ה: <span class="card-instractor"></span></li>
                                     </ul>
                                     <div class="row d-flex card-footer justify-content-between align-content-between">
-                                        <a href="#" class="col col-5 card-link btn  tm-button card-reg" style="font-size: 14px;">להרשמה</a>
+                                        <a href="#" class="col col-5 card-link btn  tm-button card-reg" style="font-size: 14px;" target="_blank">להרשמה</a>
                                         <a href="#" class="col col-6 card-link btn tm-button card-zoom" style="font-size: 14px;">התחברות
                                             לזום</a>
                                     </div>
@@ -363,7 +367,16 @@
     <script src="assets/js/main.js"></script>
     <script src="assets/js/ApiHeandler.js"></script>
    
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>   
+    $( "#datepicker" ).datepicker();
+    $( ".selector" ).datepicker({dateFormat: "dd-mm-yy"});
+    $.datepicker.setDefaults( $.datepicker.regional[ "he" ] );
+    $( ".selector" ).datepicker({isRTL: true});
+    </script>
 
     <!--// Js Files -->
 </body>

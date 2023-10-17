@@ -90,7 +90,7 @@ function createCards(newData) {
 
 function filtterCards(newData) {
     console.log("Filtering cards");    
-    const date = document.getElementById("datepicker").value;
+    let date = document.getElementById("datepicker").value;
     const lang = document.getElementById("langInput").value;
     const age = document.getElementById("ageInput").value;
     const ele = document.getElementById("cards-continer");
@@ -114,7 +114,7 @@ function filtterCards(newData) {
         langOn = true;
     }
 
-    if (age == 0) {
+    if (age == "בחירת קהל יעד") {
         ageOn = false;
     }
     else {
@@ -122,67 +122,66 @@ function filtterCards(newData) {
     }
 
     if (langOn == true || dateOn == true || ageOn == true) {        
-        let AddE = true;
-        newData.forEach(el => {           
+        let AddE;
+        const dateArry=date.split(`/`);
+        date=dateArry[1]+`/`+dateArry[0]+`/`+dateArry[2];        
 
-            // console.log("el.Age="+el.Age);
-            // console.log("inputAge="+age);
-           
-            
+        newData.forEach(el => { 
+            AddE=true;       
+
+                    
 
             if (dateOn == true) {
+                
+              
                 if (el.Date != date) {
                     AddE = false;
                 }
-                console.log("dateOn adde: "+AddE);
+               
             }
 
             if (langOn == true) {
                 if (el.Language != lang) {
                     AddE = false;
                 }                
-                console.log("language adde: "+AddE);
+               
             }
            
-            if (ageOn == true) { 
-                console.log("input age: "+age);
+            if (ageOn == true) {   
+                  
                 let AgeOK=false;
                 let Ages;
-
                 if(el.Age.includes(', ')){
-                   Ages = el.Age.split(', ');
-                   console.log("Age list"+Ages);
-                   for (let i = 0; i < Ages.length; i++) {
-                    console.log("age i: "+Ages[i]);
+                   Ages = el.Age.split(', ');                  
+                   for (let i = 0; i < Ages.length; i++) {                   
                     if(Ages[i]==age){
                         AgeOK=true;
-                        console.log("AgeOK: "+AgeOK);
+                      
                     }                  
                 }
                 }
-                else{
-                    console.log("not string");
+                else{                  
                     if(el.Age==age){
                         AgeOK=true;
-                        console.log("AgeOK: "+AgeOK);
+                       
                     }                  
                 }                      
                 
+               
                 if(AgeOK==false){
                     AddE = false;
                 }   
                            
-                console.log("AddE end:"+AddE);
+               
             }            
 
             if (AddE == true) {
-                filterData.push(el); 
-                console.log("pushed: "+el.Age);               
+                filterData.push(el);                             
             }
 
         });
 
-        console.log(filterData);
+       
 
         ele.innerHTML = "";
         if(filterData.length>0){
